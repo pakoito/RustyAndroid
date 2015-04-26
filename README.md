@@ -20,3 +20,9 @@ Why didn't it work?
 Rust for Windows has trouble building dynamic libraries. See #[18807](https://github.com/rust-lang/rust/issues/18807)
 
 Rust compiler for Android can not be built from Windows. See [this](https://github.com/rust-lang/rust-wiki-backup/blob/master/Doc-building-for-android.md).
+
+
+License
+==========
+
+See LICENSE.md
