@@ -7,7 +7,7 @@ What works
 
     Hacked jna library ready for gradle use. See https://github.com/pakoito/jna
 
-    C compiling and ready for interop.
+    C compiling and ready for interop as seen in app/src/main/jni and app/build.gradle
 
     C and Rust interop as shown in RustLib.
 
