@@ -7,7 +7,7 @@ What works
 
     C compiling and ready for interop.
 
-    C and Rust interop.
+    C and Rust interop as shown in RustLib.
 
 What doesn't work
 ==========

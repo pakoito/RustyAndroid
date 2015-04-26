@@ -1,0 +1,8 @@
+[package]
+name = "RustLib"
+version = "0.1.0"
+authors = ["pakoito <pakoitogod@gmail.com>"]
+
+[lib]
+name = "rust"
+crate-type = ["dylib"]
