@@ -1,5 +1,7 @@
 Sunday afternoon attempt at interoping Java-Android and Rust.
 
+tl;dr not possible on windows yet due to lack of llvm
+
 What works
 ==========
 
@@ -9,10 +11,12 @@ What works
 
     C and Rust interop as shown in RustLib.
 
+
 What doesn't work
 ==========
 
     Building static/dynamic Rust libraries that are binary compatible with Android.
+
 
 Why didn't it work?
 ==========
@@ -20,6 +24,12 @@ Why didn't it work?
 Rust for Windows has trouble building dynamic libraries. See #[18807](https://github.com/rust-lang/rust/issues/18807)
 
 Rust compiler for Android can not be built from Windows. See [this](https://github.com/rust-lang/rust-wiki-backup/blob/master/Doc-building-for-android.md).
+
+
+Todo
+==========
+
+Try again on Linux/OSX next week.
 
 
 License
