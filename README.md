@@ -3,7 +3,7 @@ Sunday afternoon attempt at interoping Java-Android and Rust.
 What works
 ==========
 
-    Hacked jna library ready for gradle use. See [https://github.com/pakoito/jna](https://github.com/pakoito/jna)
+    Hacked jna library ready for gradle use. See https://github.com/pakoito/jna
 
     C compiling and ready for interop.
 
@@ -51,4 +51,4 @@ http://sdgsystems.com/blog/using-android-ndk-android-studio/
 
 http://www.eshayne.com/jnaex/example01.html
 
-https://code.google.com/p/jnaerator/wiki/JNAeratorFAQ#How_to_use_MacOS_X_frameworks_from_Java_?
+https://code.google.com/p/jnaerator/wiki/JNAeratorFAQ
