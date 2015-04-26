@@ -26,3 +26,29 @@ License
 ==========
 
 See LICENSE.md
+
+
+References (in no special order)
+==========
+
+http://blog.rust-lang.org/2015/04/24/Rust-Once-Run-Everywhere.html
+
+http://users.rust-lang.org/t/rust-nightly-for-android/645/3
+
+https://github.com/rust-lang/rust-wiki-backup/blob/master/Doc-building-for-android.md
+
+https://github.com/rust-lang/rust/issues/17437
+
+http://harkablog.com/calling-rust-from-c-and-python.html
+
+http://stackoverflow.com/questions/28161628/linking-shared-object-library-without-headers-with-ndk-in-android-studio
+
+https://ubuntuincident.wordpress.com/2014/12/24/getting-started-with-the-rust-programming-language/
+
+http://www.sureshjoshi.com/mobile/android-ndk-in-android-studio-with-swig/
+
+http://sdgsystems.com/blog/using-android-ndk-android-studio/
+
+http://www.eshayne.com/jnaex/example01.html
+
+https://code.google.com/p/jnaerator/wiki/JNAeratorFAQ#How_to_use_MacOS_X_frameworks_from_Java_?
