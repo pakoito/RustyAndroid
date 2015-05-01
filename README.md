@@ -11,15 +11,13 @@ What works
 
     C and Java interop via JNA
 
-    C and Rust interop via static library
+    C and Rust interop via static linkage
 
 Put it all together and you get RustyAndroid.
 
 
 How to
 ==========
-
-Setup your ```ndk.dir``` in ```local.properties``
 
 Follow [this guide](https://github.com/rust-lang/rust-wiki-backup/blob/master/Doc-building-for-android.md) through steps 1-4 to get your toolchain running
 
@@ -33,9 +31,13 @@ Clone this repository
 
 Import into Android Studio
 
-Create your .rs files like the examples in RustLib and compile them using
+Setup your ```ndk.dir``` in ```local.properties``
 
-    rustc --target=arm-linux-androideabi -C linker=$ANDROID_TOOLCHAIN/bin/arm-linux-androideabi-gcc -C link-args=-pie src/lib.rs -C ar=$ANDROID_TOOLCHAIN/bin/arm-linux-androideabi-ar --crate-type=staticlib
+Create your .rs files like the examples in the RustLib folder, and compile them using rustc
+
+    rustc --target=arm-linux-androideabi -C linker=$ANDROID_TOOLCHAIN/bin/arm-linux-androideabi-gcc -C link-args=-pie -C ar=$ANDROID_TOOLCHAIN/bin/arm-linux-androideabi-ar --crate-type=staticlib src/lib.rs
+
+*Cargo was giving me hell for Android on OSX, go the rustc route for now*
 
 Rename your .a output and copy it to /app/src/main/jni
 
@@ -47,7 +49,7 @@ For JNA integration, see ```ThingLibrary.java``` and ```MainActivity.java```
 Known Issues
 =============
 
-Plenty of them. This shouldn't even work.
+Plenty of them. This shouldn't even work but it does.
 
 
 Jnaenerator
