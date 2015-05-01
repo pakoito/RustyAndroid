@@ -7,28 +7,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-
 public class MainActivity extends ActionBarActivity {
-    public interface CLibrary extends Library {
-        CLibrary INSTANCE = (CLibrary)Native.loadLibrary("HelloRust", CLibrary.class);
-
-        int double_input(int num);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView dump = (TextView)findViewById(R.id.dump_txv);
         int n = 14;
-        dump.setText("Rust thinks that double of " + n + " is "
-                + ThingLibrary.INSTANCE.dupli(n) + " and the native invoke is "
-                //+ ThingLibrary.JNA_NATIVE_LIB.getFunction("duplicate").invokeInt(new Object[] {
-                //    n
-                //})
-        );
+        dump.setText("Rust thinks that quadruple of " + n + " is " + ThingLibrary.INSTANCE.dupli(n)
+                + " and the native invoke is "
+                + ThingLibrary.JNA_NATIVE_LIB.getFunction("dupli").invokeInt(new Object[] {
+                    n
+                }) + " and its address is "
+                + ThingLibrary.JNA_NATIVE_LIB.getGlobalVariableAddress("dupli"));
     }
 
     @Override
