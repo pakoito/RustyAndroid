@@ -104,7 +104,7 @@ http://stackoverflow.com/questions/15241869/pthread-error-in-ndk-build
 https://github.com/skligys/rusty-cardboard/tree/fc999e0385de7ab5d32a319ca523225a7e0d673f/jni
 
 
-Screeshot
+Screenshot
 ==========
 
 ![First run](https://github.com/pakoito/RustyAndroid/blob/master/device-2015-05-01-205416.png)
