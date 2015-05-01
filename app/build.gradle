@@ -1,5 +1,24 @@
 import org.apache.tools.ant.taskdefs.condition.Os
 
+def getPlatformNdkBuildCommand() {
+    def rootDir = project.rootDir
+    def localProperties = new File(rootDir, "local.properties")
+    if (localProperties.exists()) {
+        Properties properties = new Properties()
+        localProperties.withInputStream {
+            instr -> properties.load(instr)
+        }
+        def ndkDir = properties.getProperty('ndk.dir')
+        if (ndkDir == null) {
+            throw new GradleException("The ndk.dir property in local.propeties is not set")
+        }
+        def ndkBuild = Os.isFamily(Os.FAMILY_WINDOWS) ? "$ndkDir/ndk-build.cmd" : "$ndkDir/ndk-build"
+        return ndkBuild
+    } else {
+        throw new GradleException("The local.properties file does not exist")
+    }
+}
+
 apply plugin: 'com.android.application'
 
 android {
@@ -21,22 +40,28 @@ android {
     }
 
     sourceSets.main {
-//        jniLibs.srcDir 'src/main/libs' //set libs as .so's location instead of jniLibs
-        jni.srcDirs = [] //disable automatic ndk-build call with auto-generated Android.mk
+        jniLibs.srcDir 'src/main/jniLibs'
+        jni.srcDirs = [] //disable automatic ndk-build call
     }
 
     // call regular ndk-build(.cmd) script from app directory
     task ndkBuild(type: Exec) {
-        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-            commandLine 'ndk-build.cmd', '-C', file('src/main').absolutePath
-        } else {
-            commandLine 'ndk-build', '-C', file('src/main').absolutePath
-        }
+        def ndkBuild = getPlatformNdkBuildCommand()
+        commandLine "$ndkBuild", '-j8', '-C', file('src/main/jni').absolutePath
+    }
+
+    // Copy shared libs into jniLibs folder (Hacky workaround)
+    task copySharedLibs(type: Copy) {
+        from 'src/main/libs'
+        into 'src/main/jniLibs'
     }
 
     tasks.withType(JavaCompile) {
         compileTask -> compileTask.dependsOn ndkBuild
     }
+
+    copySharedLibs.dependsOn ndkBuild
+    copySharedLibs.execute()
 }
 
 

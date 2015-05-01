@@ -1,3 +1,4 @@
+
 package com.pacoworks.hellorust;
 
 import android.os.Bundle;
@@ -9,24 +10,25 @@ import android.widget.TextView;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 
-
 public class MainActivity extends ActionBarActivity {
-
     public interface CLibrary extends Library {
-        CLibrary INSTANCE = (CLibrary)
-                Native.loadLibrary("HelloRust",
-                        CLibrary.class);
+        CLibrary INSTANCE = (CLibrary)Native.loadLibrary("HelloRust", CLibrary.class);
 
-        int example1(int num);
+        int double_input(int num);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView dump = (TextView) findViewById(R.id.dump_txv);
+        TextView dump = (TextView)findViewById(R.id.dump_txv);
         int n = 14;
-        dump.setText("Rust thinks that double of " + n + " is " + CLibrary.INSTANCE.example1(n));
+        dump.setText("Rust thinks that double of " + n + " is "
+                + ThingLibrary.INSTANCE.dupli(n) + " and the native invoke is "
+                //+ ThingLibrary.JNA_NATIVE_LIB.getFunction("duplicate").invokeInt(new Object[] {
+                //    n
+                //})
+        );
     }
 
     @Override
@@ -42,12 +44,10 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
+        // noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
