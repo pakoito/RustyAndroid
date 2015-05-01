@@ -53,6 +53,10 @@ Plenty of them. This shouldn't even work but it does.
 
 There is a requirement for the unwind library found by @skligys to solve some missing dependencies.
 
+For now it builds only armeabi libraries. You can reuse them for armeabi-v7a too just by copying ```libHelloRust.so``` from /app/src/main/jniLibs/armeabi to /app/src/main/jniLibs/armeabi-v7a.
+
+Building rust static libraries only works on linux and OSX. Windows doesn't have first class LLVM/Clang support.
+
 
 Jnaenerator
 ============
