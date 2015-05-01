@@ -1,7 +1,7 @@
 Rusty Android
 ==========
 
-PoC for interfacing Rust and Java-Android via JNA.
+Proof of Concept for interfacing Rust and Java-Android via JNA. Built on rustc 1.1.0-dev (aecf3d8b6 2015-05-01) 
 
 
 What works
@@ -31,7 +31,7 @@ Clone this repository
 
 Import into Android Studio
 
-Setup your ```ndk.dir``` in ```local.properties``
+Setup your ```ndk.dir``` in ```local.properties```
 
 Create your .rs files like the examples in the RustLib folder, and compile them using rustc
 
@@ -51,13 +51,15 @@ Known Issues
 
 Plenty of them. This shouldn't even work but it does.
 
+There is a requirement for the unwind library found by @skligys to solve some missing dependencies.
+
 
 Jnaenerator
 ============
 
 You can autogenerate your java glue files using Jnaenerator with a variation of
 
-    java -jar jnaerator-0.13-20150328.111636-4-shaded.jar -library thing thing.c -o . -v -noJar -noComp -runtime JNA
+    java -jar jnaerator-shaded.jar -library thing thing.c -o . -v -noJar -noComp -runtime JNA
 
 
 License
