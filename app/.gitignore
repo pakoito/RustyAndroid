@@ -7,3 +7,5 @@
 /obj
 target
 Cargo.lock
+.idea
+*.iml
