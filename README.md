@@ -33,7 +33,7 @@ Import into Android Studio
 
 Setup your ```ndk.dir``` in ```local.properties```
 
-Create your .rs files like the examples in the RustLib folder, and compile them using rustc
+Create your .rs files with pub extern functions like the examples in the RustLib folder, and compile them using rustc
 
     rustc --target=arm-linux-androideabi -C linker=$ANDROID_TOOLCHAIN/bin/arm-linux-androideabi-gcc -C link-args=-pie -C ar=$ANDROID_TOOLCHAIN/bin/arm-linux-androideabi-ar --crate-type=staticlib src/lib.rs
 
@@ -41,7 +41,9 @@ Create your .rs files like the examples in the RustLib folder, and compile them 
 
 Rename your .a output and copy it to /app/src/main/jni
 
-See ```build.gradle```, ```Android.mk``` and ```Application.mk```
+Create your C glue layer bringing Rust through extern functions as in /app/src/main/jni/thing.c
+
+See ```build.gradle```, ```Android.mk``` and ```Application.mk``` for how it all is tied together on Android
 
 For JNA integration, see ```ThingLibrary.java``` and ```MainActivity.java```
 
