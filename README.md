@@ -24,6 +24,10 @@ Follow [this guide](https://github.com/rust-lang/rust-wiki-backup/blob/master/Do
 *In case you're on an OSX, on step 3 your configure command is*
 
     ../configure --host=x86_64-apple-darwin --target=arm-linux-androideabi --android-cross-path="$ANDROID_TOOLCHAIN"
+    
+*In case you're on Windows-MinGW, on step 3 your configure command is*
+
+    ../configure --host=i686-pc-windows-gnu --target=arm-linux-androideabi --android-cross-path="$ANDROID_TOOLCHAIN"
 
 Clone this repository
 
@@ -57,7 +61,7 @@ There is a requirement for the unwind library found by @skligys to solve some mi
 
 For now it builds only armeabi libraries. You can reuse them for armeabi-v7a too just by copying ```libHelloRust.so``` from /app/src/main/jniLibs/armeabi to /app/src/main/jniLibs/armeabi-v7a.
 
-Building rust static libraries only works on linux and OSX. Windows doesn't have first class LLVM/Clang support.
+It can be built on Linux and OSX effortlesly. I can be built on Windows using an updated MinGW, but only if you have LLVM/Clang versions from June '15 onwards. It may require to have Visual Studio installed (?) ~~Building rust static libraries only works on linux and OSX. Windows doesn't have first class LLVM/Clang support.~~
 
 
 Jnaenerator
@@ -104,6 +108,8 @@ https://github.com/rust-lang/rust/issues/25032#issuecomment-98176414
 http://stackoverflow.com/questions/15241869/pthread-error-in-ndk-build
 
 https://github.com/skligys/rusty-cardboard/tree/fc999e0385de7ab5d32a319ca523225a7e0d673f/jni
+
+http://sourceforge.net/p/mingw/bugs/2043/
 
 
 Screenshot
